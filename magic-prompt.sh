@@ -54,15 +54,20 @@ _prompt_git() {
   if $(git rev-parse --verify refs/stash &>/dev/null); then
   	status+='$';
   fi;
-  # Check if repo is ahead or behind the remote
-  if [ $(git rev-parse @) = $(git rev-parse @{u}) ]; then
-    upToDate=1;
-  elif [ $(git rev-parse @) = $(git merge-base @ @{u}) ]; then
-    status+='⬇';
-  elif [ $(git rev-parse @{u}) = $(git merge-base @ @{u}) ]; then
-    status+='⬆';
+  # Check if no remote
+  if ! git diff @{u} &>/dev/null; then
+    status+='!';
   else
-    status+='⬇⬆';
+    # Check if repo is ahead or behind the remote
+    if [ $(git rev-parse @) = $(git rev-parse @{u}) ]; then
+      upToDate=1;
+    elif [ $(git rev-parse @) = $(git merge-base @ @{u}) ]; then
+      status+='⬇';
+    elif [ $(git rev-parse @{u}) = $(git merge-base @ @{u}) ]; then
+      status+='⬆';
+    else
+      status+='⬇⬆';
+    fi;
   fi;
 
   echo -e "${branchType} ${branch} ${status}"
