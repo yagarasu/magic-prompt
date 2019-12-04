@@ -9,21 +9,22 @@ source ~/magic-prompt.sh
 ```
 
 ## Features
+
 * Shows git branch
 * Emojis per branch type
-** 👑 Master
-** ☕️ Develop
-** 🛠 Feature
-** 🐛 Bugfix
-** 🚀 Release
+  * 👑 Master
+  * ☕️ Develop
+  * 🛠 Feature
+  * 🐛 Bugfix
+  * 🚀 Release
 * Shows git status
-** `*` for uncommitted
-** `+` for unstaged
-** `?` for untracked
-** `$` for stashed
-** `⬇` when local is behind remote
-** `⬆` when local is ahead of remote
-** `⬇⬆` when local has diverged
+  * `*` for uncommitted
+  * `+` for unstaged
+  * `?` for untracked
+  * `$` for stashed
+  * `⬇` when local is behind remote
+  * `⬆` when local is ahead of remote
+  * `⬇⬆` when local has diverged
 * Alerts when last command failed with ⚠️
 * Nice colors :)
 
